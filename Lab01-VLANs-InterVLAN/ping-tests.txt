@@ -1,0 +1,53 @@
+ Lab 01 – Ping Tests
+
+This file contains captured ICMP ping tests from the completed Lab 01 topology.
+
+ 1. PC1 Sales (192.168.10.10) → Default Gateway (192.168.10.1)
+
+C:\>ping 192.168.10.1
+
+Pinging 192.168.10.1 with 32 bytes of data:
+
+Reply from 192.168.10.1: bytes=32 time<1ms TTL=255
+Reply from 192.168.10.1: bytes=32 time=16ms TTL=255
+Reply from 192.168.10.1: bytes=32 time<1ms TTL=255
+Reply from 192.168.10.1: bytes=32 time<1ms TTL=255
+
+Ping statistics for 192.168.10.1:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 16ms, Average = 4ms
+
+
+2. PC1 Sales (192.168.10.10) → PC1 IT (192.168.20.10)
+
+C:\>ping 192.168.20.10
+
+Pinging 192.168.20.10 with 32 bytes of data:
+
+Reply from 192.168.20.10: bytes=32 time<1ms TTL=127
+Reply from 192.168.20.10: bytes=32 time=24ms TTL=127
+Reply from 192.168.20.10: bytes=32 time=11ms TTL=127
+Reply from 192.168.20.10: bytes=32 time=15ms TTL=127
+
+Ping statistics for 192.168.20.10:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 24ms, Average = 12ms
+
+
+3. PC1 Sales (192.168.10.10) → PC2 IT (192.168.20.20)
+
+C:\>ping 192.168.20.20
+
+Pinging 192.168.20.20 with 32 bytes of data:
+
+Reply from 192.168.20.20: bytes=32 time<1ms TTL=127
+Reply from 192.168.20.20: bytes=32 time=21ms TTL=127
+Reply from 192.168.20.20: bytes=32 time=49ms TTL=127
+Reply from 192.168.20.20: bytes=32 time<1ms TTL=127
+
+Ping statistics for 192.168.20.20:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 49ms, Average = 17ms

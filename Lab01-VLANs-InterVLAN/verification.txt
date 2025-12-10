@@ -1,0 +1,100 @@
+Lab 01 – Verification Output
+
+This file contains the key device verification commands and outputs captured from the Cisco 3560 multilayer switch used in Lab 01.  
+These outputs confirm correct VLAN configuration, SVI status, interface assignment, routing behavior, and Layer 3 functionality.
+
+---
+
+ 1. Routing Table  
+Command: `show ip route`
+
+Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP  
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area  
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2  
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP  
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area  
+       * - candidate default, U - per-user static route, o - ODR  
+       P - periodic downloaded static route  
+
+Gateway of last resort is not set
+
+C    192.168.10.0/24 is directly connected, Vlan10  
+C    192.168.20.0/24 is directly connected, Vlan20  
+
+---
+
+2. SVI Configuration  
+Command: `show running-config | section interface Vlan`
+
+interface Vlan10  
+ mac-address 0002.1638.e901  
+ ip address 192.168.10.1 255.255.255.0  
+!  
+interface Vlan20  
+ mac-address 0002.1638.e902  
+ ip address 192.168.20.1 255.255.255.0  
+
+---
+
+3. Access Port VLAN Assignments  
+(Extracted from running configuration)
+
+interface FastEthernet0/1  
+ switchport access vlan 10  
+ switchport mode access  
+!  
+interface FastEthernet0/2  
+ switchport access vlan 10  
+ switchport mode access  
+!  
+interface FastEthernet0/3  
+ switchport access vlan 20  
+ switchport mode access  
+!  
+interface FastEthernet0/4  
+ switchport access vlan 20  
+ switchport mode access  
+
+---
+
+4. Interface Status Summary  
+ Command: `show ip interface brief`
+
+Vlan10                 192.168.10.1    YES manual up                    up  
+Vlan20                 192.168.20.1    YES manual up                    up  
+
+(Other interfaces omitted for clarity)
+
+---
+ 5. VLAN Table  
+ Command: `show vlan brief`
+
+VLAN Name                             Status    Ports  
+---- -------------------------------- --------- -------------------------------  
+1    default                          active    Fa0/5, Fa0/6, Fa0/7, Fa0/8  
+                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12  
+                                                Fa0/13, Fa0/14, Fa0/15, Fa0/16  
+                                                Fa0/17, Fa0/18, Fa0/19, Fa0/20  
+                                                Fa0/21, Fa0/22, Fa0/23, Fa0/24  
+                                                Gig0/1, Gig0/2  
+10   Sales                            active    Fa0/1, Fa0/2  
+20   IT                               active    Fa0/3, Fa0/4  
+1002 fddi-default                     active  
+1003 token-ring-default               active  
+1004 fddinet-default                  active  
+1005 trnet-default                    active  
+
+---
+
+Verification Summary
+
+All verification outputs confirm the following:
+
+- VLANs 10 and 20 were successfully created and assigned to correct ports.  
+- SVIs for both VLANs are up/up with correct IP addressing.  
+- Layer 3 routing is operational with directly connected routes visible.  
+- Routing table correctly reflects both subnets.  
+- Inter-VLAN connectivity is fully functional.  
+
+This concludes the verification section of Lab 01.
+
