@@ -1,0 +1,76 @@
+LAB 7: DHCP SERVER + RELAY
+PING TEST RESULTS
+
+---------------------------------
+DEVICE: PC0 (DHCP CLIENT)
+---------------------------------
+
+Cisco Packet Tracer PC Command Line 1.0
+
+C:\>ping 192.168.20.1
+
+Pinging 192.168.20.1 with 32 bytes of data:
+
+Reply from 192.168.20.1: bytes=32 time<1ms TTL=255
+Reply from 192.168.20.1: bytes=32 time<1ms TTL=255
+Reply from 192.168.20.1: bytes=32 time=13ms TTL=255
+Reply from 192.168.20.1: bytes=32 time=4ms TTL=255
+
+Ping statistics for 192.168.20.1:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 13ms, Average = 4ms
+
+
+C:\>ping 10.0.0.1
+
+Pinging 10.0.0.1 with 32 bytes of data:
+
+Reply from 10.0.0.1: bytes=32 time<1ms TTL=254
+Reply from 10.0.0.1: bytes=32 time=15ms TTL=254
+Reply from 10.0.0.1: bytes=32 time=23ms TTL=254
+Reply from 10.0.0.1: bytes=32 time=12ms TTL=254
+
+Ping statistics for 10.0.0.1:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 23ms, Average = 12ms
+
+
+C:\>ping 192.168.20.12
+
+Pinging 192.168.20.12 with 32 bytes of data:
+
+Reply from 192.168.20.12: bytes=32 time=12ms TTL=128
+Reply from 192.168.20.12: bytes=32 time<1ms TTL=128
+Reply from 192.168.20.12: bytes=32 time<1ms TTL=128
+Reply from 192.168.20.12: bytes=32 time=1ms TTL=128
+
+Ping statistics for 192.168.20.12:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 12ms, Average = 3ms
+
+
+C:\>ping 192.168.20.13
+
+Pinging 192.168.20.13 with 32 bytes of data:
+
+Reply from 192.168.20.13: bytes=32 time<1ms TTL=128
+Reply from 192.168.20.13: bytes=32 time=12ms TTL=128
+Reply from 192.168.20.13: bytes=32 time<1ms TTL=128
+Reply from 192.168.20.13: bytes=32 time<1ms TTL=128
+
+Ping statistics for 192.168.20.13:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 12ms, Average = 3ms
+
+
+---------------------------------
+PING TEST SUMMARY
+---------------------------------
+- PC0 successfully reached default gateway (192.168.20.1)
+- PC0 successfully reached DHCP server (10.0.0.1)
+- PC0 successfully communicated with other DHCP clients
+- All ping tests recorded 0% packet loss

@@ -1,0 +1,68 @@
+
+LAB 7: DHCP SERVER + RELAY
+POST-CONFIGURATION VERIFICATION
+
+---------------------------------
+DEVICE: R0 (DHCP SERVER)
+---------------------------------
+
+> show ip dhcp binding
+
+IP address       Client-ID/Hardware address     Lease expiration   Type
+192.168.20.11    0060.4734.0E04                  --                Automatic
+192.168.20.12    0001.6358.3080                  --                Automatic
+192.168.20.13    0006.2A72.63D7                  --                Automatic
+
+
+> show ip dhcp pool
+
+Pool LAN20 :
+ Utilization mark (high/low)    : 100 / 0
+ Subnet size (first/next)       : 0 / 0
+ Total addresses                : 254
+ Leased addresses               : 3
+ Excluded addresses             : 1
+ Pending event                  : none
+
+ Current index        IP address range                 Leased/Excluded/Total
+ 192.168.20.1         192.168.20.1 - 192.168.20.254    3 / 1 / 254
+
+
+> show ip route
+
+C 10.0.0.0/30 is directly connected, GigabitEthernet0/0
+L 10.0.0.1/32 is directly connected, GigabitEthernet0/0
+S 192.168.20.0/24 [1/0] via 10.0.0.2
+
+
+---------------------------------
+DEVICE: R1 (DHCP RELAY)
+---------------------------------
+
+> show ip interface brief
+
+Interface              IP-Address      Status    Protocol
+GigabitEthernet0/0     10.0.0.2        up        up
+GigabitEthernet0/1     192.168.20.1    up        up
+GigabitEthernet0/2     unassigned      down      down
+
+
+> show running-config (relevant sections)
+
+interface GigabitEthernet0/0
+ ip address 10.0.0.2 255.255.255.252
+
+interface GigabitEthernet0/1
+ ip address 192.168.20.1 255.255.255.0
+ ip helper-address 10.0.0.1
+
+ip route 0.0.0.0 0.0.0.0 10.0.0.1
+
+
+---------------------------------
+VERIFICATION SUMMARY
+---------------------------------
+- DHCP server successfully issued multiple IP addresses from the same pool
+- DHCP relay correctly forwarded requests to the server
+- Routing between server and client network is functional
+- End-to-end DHCP operation confirmed
