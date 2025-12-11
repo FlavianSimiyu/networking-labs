@@ -1,0 +1,43 @@
+Lab 3 — IP Addressing Table
+
+This table lists all devices, interfaces, and assigned IPv4 addresses used in the Static Routing + Default Routes topology.
+
+---
+
+Router R0
+Interface | IP Address   | Subnet Mask       | Description
+G0/0     | 10.0.0.1      | 255.255.255.0     | LAN1 network
+G0/1     | 10.0.1.1      | 255.255.255.0     | Link to R1
+G0/2     | —             | —                 | Not used
+
+---
+
+Router R1
+Interface | IP Address   | Subnet Mask       | Description
+G0/0     | 10.0.1.2      | 255.255.255.0     | Link to R0
+G0/1     | 10.0.2.1      | 255.255.255.0     | Link to R2
+G0/2     | —             | —                 | Not used
+
+---
+
+Router R2
+Interface | IP Address   | Subnet Mask       | Description
+G0/0     | 10.0.2.2      | 255.255.255.0     | Link to R1
+G0/1     | 10.0.3.1      | 255.255.255.0     | LAN2 network
+G0/2     | —             | —                 | Not used
+
+---
+
+PCs
+Device | IP Address   | Subnet Mask       | Default Gateway
+PC0    | 10.0.0.10     | 255.255.255.0     | 10.0.0.1
+PC1    | 10.0.3.10     | 255.255.255.0     | 10.0.3.1
+
+---
+
+Network Summary
+Network        | Subnet Mask       | Connected Devices
+10.0.0.0/24    | 255.255.255.0     | PC0, R0 G0/0
+10.0.1.0/24    | 255.255.255.0     | R0 G0/1, R1 G0/0
+10.0.2.0/24    | 255.255.255.0     | R1 G0/1, R2 G0/0
+10.0.3.0/24    | 255.255.255.0     | PC1, R2 G0/1

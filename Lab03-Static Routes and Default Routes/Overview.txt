@@ -1,0 +1,40 @@
+Lab 3 — Overview
+Static Routing + Default Routes
+
+In this lab, I configured a multi-router topology to practice static routing and default routing. The network consisted of three routers (R0, R1, R2), two switches, and two end devices (PC0 and PC1). My goal was to enable full end-to-end communication between all networks by manually defining the routing paths.
+
+Concepts Demonstrated
+
+1. Static Routing
+I manually configured static routes on each router so they could reach networks that were not directly connected. For example, on R0 I added routes pointing toward R1 to reach the 10.0.2.0/24 and 10.0.3.0/24 networks.
+
+2. Default Routes
+I configured default routes on the edge routers (R0 and R2). This allowed each router to forward “unknown” destinations to the next-hop router without needing additional specific routes.
+
+3. Multi-Hop Routing
+Because PC0 and PC1 are located on opposite ends of the network, traffic had to move across all three routers. I confirmed that routing tables were correctly updated so packets could successfully travel:
+PC0 → R0 → R1 → R2 → PC1
+and back again.
+
+4. End-to-End Testing
+I used ICMP ping tests to verify connectivity at each stage. During the tests, I observed initial timeouts (due to ARP resolution), followed by consistent successful connectivity between all networks.
+
+Tasks I Completed
+
+1. Built the full topology in Packet Tracer  
+2. Assigned IPv4 addresses to all router and PC interfaces  
+3. Configured static routes on R0, R1, and R2  
+4. Added default routes to simplify routing on R0 and R2  
+5. Verified routing tables using show ip interface brief and show ip route  
+6. Performed ping tests between all devices  
+7. Documented all results for verification
+
+Outcome
+
+By completing this lab, I demonstrated the ability to manually control routing behavior across multiple routers.  
+I verified that:
+- Static routes were correctly installed  
+- Default routes were functioning as fallback paths  
+- All networks could communicate end-to-end  
+
+This lab strengthened my understanding of how routers make forwarding decisions in a multi-network environment.
